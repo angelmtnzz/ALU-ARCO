@@ -14,22 +14,22 @@ class Division
     public:
         Division();
         ~Division();
-        QString div(DataConvert numA, DataConvert numB);
+        QString div(DataConvert num1, DataConvert num2);
 
     private:
-        int signoA = 0;
-        int expoA = 0;
+        int Signo1 = 0;
+        int Exponente1 = 0;
 
-        int signoB = 0;
-        int expoB = 0;
-
-        std::vector<int>MantisaA;
-        std::vector<int>MantisaB;
+        int Signo2 = 0;
+        int Exponente2 = 0;
 
         int Guardado = 0;
         int Redondeado = 0;
         int Sticky = 0;
         int mantisaBits = 24;
+
+        std::vector<int>Mantisa1;
+        std::vector<int>Mantisa2;
 
         bool op_changed = false;
         bool complemt_p = false;

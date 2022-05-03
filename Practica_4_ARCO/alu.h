@@ -1,29 +1,23 @@
 #ifndef ALU_H
 #define ALU_H
 
-#include <QAbstractItemModel>
+#include <iostream>
+#include "Suma.h"
+#include "Multiplicacion.h"
+#include "division.h"
+#include "dataConvert.h"
+#include <QString>
 
-class Alu : public QAbstractItemModel
+class Alu
 {
-    Q_OBJECT
+    public:
+       Alu();
+       ~Alu();
 
-public:
-    explicit Alu(QObject *parent = nullptr);
-
-    // Header:
-    QVariant headerData(int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const override;
-
-    // Basic functionality:
-    QModelIndex index(int row, int column,
-                      const QModelIndex &parent = QModelIndex()) const override;
-    QModelIndex parent(const QModelIndex &index) const override;
-
-    int rowCount(const QModelIndex &parent = QModelIndex()) const override;
-    int columnCount(const QModelIndex &parent = QModelIndex()) const override;
-
-    QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
-
-private:
+       void Operaciones(DataConvert Op1, DataConvert Op2, int Opcion);
+       QString Resultado();
+    private:
+       QString resultado;
 };
 
 #endif // ALU_H

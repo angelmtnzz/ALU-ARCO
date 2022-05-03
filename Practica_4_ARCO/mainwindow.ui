@@ -300,7 +300,7 @@
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QLabel" name="label_14">
+   <widget class="QLabel" name="R_Result">
     <property name="geometry">
      <rect>
       <x>70</x>
@@ -319,7 +319,7 @@
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QLabel" name="label_15">
+   <widget class="QLabel" name="IE_Result">
     <property name="geometry">
      <rect>
       <x>300</x>
@@ -338,7 +338,7 @@
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QLabel" name="label_16">
+   <widget class="QLabel" name="H_Result">
     <property name="geometry">
      <rect>
       <x>530</x>

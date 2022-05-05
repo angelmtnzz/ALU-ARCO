@@ -19,6 +19,7 @@ class DataConvert{
         unsigned int getExponente();
         unsigned int getPartFrac();
         unsigned int getNumHexa();
+        int getNum();
 
         std::vector<int> change001(std::vector<int> Mantisa);
         std::vector<int> complement_2(std::vector<int> Mantisa);

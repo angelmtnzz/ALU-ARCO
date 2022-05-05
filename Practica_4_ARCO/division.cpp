@@ -41,7 +41,7 @@ QString Division::div(DataConvert num1, DataConvert num2){
         bPrima = 0.80;
     }
 
-    //Calculo Exp (A*1/B)
+    //Calculamos Exp (A*1/B)
     Exp = (A*1/B);
 
     //Calculamos el signo de la division
@@ -50,9 +50,14 @@ QString Division::div(DataConvert num1, DataConvert num2){
     //Calculamos el exponente de la division
     ExpDivision = Exponente1 - Exponente2 + Exp;
 
-    //Asignamos Xo e Yo
-    Xo = A * bPrima;
-    Yo = B * bPrima;
+
+    // (Esto último creo que no está bien)
+
+    //Asignamos Xo, Yo y r
+    //Xo = A * bPrima;
+    //Yo = B * bPrima;
+    //r = 2 - Yo;
+
 
 
 }

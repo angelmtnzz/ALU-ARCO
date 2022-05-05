@@ -31,6 +31,7 @@ class Division
         int Exp = 0;
         int Xo = 0;
         int Yo = 0;
+        int r = 0;
 
         int Guardado = 0;
         int Redondeado = 0;

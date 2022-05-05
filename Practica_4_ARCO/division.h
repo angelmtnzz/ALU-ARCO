@@ -23,6 +23,15 @@ class Division
         int Signo2 = 0;
         int Exponente2 = 0;
 
+        int A = 0;
+        int B = 0;
+        double bPrima = 0;
+        int SignoDivision = 0;
+        int ExpDivision = 0;
+        int Exp = 0;
+        int Xo = 0;
+        int Yo = 0;
+
         int Guardado = 0;
         int Redondeado = 0;
         int Sticky = 0;

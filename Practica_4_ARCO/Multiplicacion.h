@@ -13,7 +13,7 @@ class Multiplicacion{
         Multiplicacion();
         ~Multiplicacion();
 
-        QString FloatPointMultiply(DataConvert num1, DataConvert num2);
+        QString multiply(DataConvert num1, DataConvert num2);
         std::vector<int> BinaryMultiply(std::vector<int> A, std::vector<int> B);
         int sumaBit(int bit1, int bit2);
 

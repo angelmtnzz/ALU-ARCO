@@ -10,7 +10,7 @@ Multiplicacion::~Multiplicacion(){
 
 }
 
-QString Multiplicacion::FloatPointMultiply(DataConvert num1, DataConvert num2){
+QString Multiplicacion::multiply(DataConvert num1, DataConvert num2){
 
     DataConvert::Code output;
 
@@ -45,9 +45,9 @@ QString Multiplicacion::FloatPointMultiply(DataConvert num1, DataConvert num2){
     //2.Si P empieza por 0 desplazar 1 bit a la izquierda, si no, sumar 1 al exponente
     if(mantisaProducto[0]==0){
         for(int i=0; i<47; i++){
-                mantisaProducto[i]=mantisaProducto[i+1];
-            }
-            mantisaProducto[47]=0;
+            mantisaProducto[i]=mantisaProducto[i+1];
+        }
+        mantisaProducto[47]=0;
     }else{
         Exponente++;
     }
@@ -105,6 +105,77 @@ QString Multiplicacion::FloatPointMultiply(DataConvert num1, DataConvert num2){
                 }
                 mantisaProducto[0]=mantisaProducto[1];
             }
+            //Valor denormal
+            output.bitfields.Exponente=1;
+            output.bitfields.Signo=Signo;
+            for(int i=1; i<24; i++){
+                pf.push_back(mantisaProducto[i]);
+            }
+            output.bitfields.partFrac=num1.BinaryToDecimal(pf);
+            return QString::number(output.Numero);
+        }
+    }
+
+    //COMPROBAMOS OPERANDOS DENORMALES
+    if((num1.getExponente()==0 && num1.getPartFrac()!=00000000000000000000000) || (num2.getExponente()==0 && num2.getPartFrac()!=00000000000000000000000)){
+        if(Exponente<1){
+            int t = 1-Exponente;
+            if(t >= 24)
+                return "0";
+            else{
+                //Desplazar aritméticamente t bits a la derecha
+                for(int i=0; i<t; i++){
+                    for(int i=47; i>=1 ;i--){
+                        mantisaProducto[i]=mantisaProducto[i-1];
+                    }
+                    mantisaProducto[0]=mantisaProducto[1];
+                }
+                //Valor denormal
+                output.bitfields.Exponente=1;
+                output.bitfields.Signo=Signo;
+                for(int i=1; i<24; i++){
+                    pf.push_back(mantisaProducto[i]);
+                }
+                output.bitfields.partFrac=num1.BinaryToDecimal(pf);
+                return QString::number(output.Numero);
+            }
+
+        }else if(Exponente>1){
+            int t1 = Exponente-1;
+            int count=0;
+            std::vector<int> mantisaAux = mantisaProducto;
+            while(mantisaAux[0]==0){
+                for(int i=0; i<47; i++){
+                    mantisaAux[i]=mantisaAux[i+1];
+                }
+                mantisaAux[47]=0;
+                count++;
+            }
+            //t2 = bits que hace falta desaplazar para que la mastisa quede normalizada
+            int t2 = count;
+            int t;
+            if(t1==t2)
+                t=t1;
+            if(t1<t2)
+                t=t1;
+            else if(t2<t1)
+                t=t2;
+            //Desplazar aritméticamente t bits a la izquierda
+            for(int i=0; i<t; i++){
+                for(int i=0; i<47; i++){
+                    mantisaAux[i]=mantisaAux[i+1];
+                }
+                mantisaAux[47]=0;
+            }
+            output.bitfields.Exponente=Exponente;
+            output.bitfields.Signo=Signo;
+            for(int i=1; i<24; i++){
+                pf.push_back(mantisaProducto[i]);
+            }
+            output.bitfields.partFrac=num1.BinaryToDecimal(pf);
+            return QString::number(output.Numero);
+
+        }else if(Exponente>1){
             //Valor denormal
             output.bitfields.Exponente=1;
             output.bitfields.Signo=Signo;

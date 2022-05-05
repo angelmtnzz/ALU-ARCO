@@ -23,6 +23,10 @@ unsigned int DataConvert::getNumHexa(){
     return unionIEEE.NumHexa;
 }
 
+int DataConvert::getNum(){
+    return unionIEEE.Numero;
+}
+
 std::string DataConvert::getBinary32()
 {
     union

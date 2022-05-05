@@ -1,46 +1,39 @@
+
 #include "alu.h"
 
-Alu::Alu(QObject *parent)
-    : QAbstractItemModel(parent)
-{
+Alu::Alu(){
+
+
 }
 
-QVariant Alu::headerData(int section, Qt::Orientation orientation, int role) const
-{
-    // FIXME: Implement me!
+Alu::~Alu(){
+
+
 }
 
-QModelIndex Alu::index(int row, int column, const QModelIndex &parent) const
-{
-    // FIXME: Implement me!
+void Alu::Operaciones(DataConvert op1, DataConvert op2, int option){
+
+    if(option == 0){
+
+        Suma suma;
+        resultado = suma.Addicion(op1, op2);
+
+    }else if(option == 1){
+
+        Multiplicacion multi;
+        resultado = multi.multiply(op1, op2);
+
+    }else{
+
+        Division divi;
+        resultado = divi.div(op1, op2);
+    }
 }
 
-QModelIndex Alu::parent(const QModelIndex &index) const
-{
-    // FIXME: Implement me!
+
+QString Alu::Resultado(){
+
+    return resultado;
 }
 
-int Alu::rowCount(const QModelIndex &parent) const
-{
-    if (!parent.isValid())
-        return 0;
 
-    // FIXME: Implement me!
-}
-
-int Alu::columnCount(const QModelIndex &parent) const
-{
-    if (!parent.isValid())
-        return 0;
-
-    // FIXME: Implement me!
-}
-
-QVariant Alu::data(const QModelIndex &index, int role) const
-{
-    if (!index.isValid())
-        return QVariant();
-
-    // FIXME: Implement me!
-    return QVariant();
-}

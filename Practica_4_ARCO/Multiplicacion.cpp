@@ -96,7 +96,7 @@ QString Multiplicacion::multiply(DataConvert num1, DataConvert num2){
     if(Exponente<1){
         int t = 1-Exponente;
         if(t >= 24)
-            return "0";
+            return "NaN";
         else{
             //Desplazar aritméticamente t bits a la derecha
             for(int i=0; i<t; i++){

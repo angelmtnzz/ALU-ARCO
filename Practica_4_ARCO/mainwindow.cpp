@@ -1,5 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "QString"
+
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -25,12 +27,23 @@ void MainWindow::on_sumButton_released()
 
     //Campos del numeroA
     ui->op1I->setText(QString::fromStdString(dataA.getBinary32()));
-    ui->op1H->setText(QString::fromStdString("0x")+QString::number(dataA.getNumHexa(),16)); //base16
+
+
+    QString cadena = QString::number(dataA.getNumHexa(),16);
+    while(cadena.length()<8){
+        cadena="0"+cadena;
+    }
+    ui->op1H->setText(QString::fromStdString("0x")+cadena); //base16
 
 
     //Campos del numeroB
     ui->op2I->setText(QString::fromStdString(dataB.getBinary32()));
-    ui->op2H->setText(QString::fromStdString("0x")+QString::number(dataB.getNumHexa(),16));
+
+    cadena = QString::number(dataB.getNumHexa(),16);
+    while(cadena.length()<8){
+        cadena="0"+cadena;
+    }
+    ui->op2H->setText(QString::fromStdString("0x")+cadena);
 
     //Campos del resultado
 
@@ -39,7 +52,12 @@ void MainWindow::on_sumButton_released()
         DataConvert resultNum(result.toFloat());
         ui->R_Result->setText(result);
         ui->IE_Result->setText(QString::fromStdString(resultNum.getBinary32()));
-        ui->H_Result->setText(QString::fromStdString("0x")+QString::number(resultNum.getNumHexa(),16));
+
+        cadena = QString::number(resultNum.getNumHexa(),16);
+        while(cadena.length()<8){
+            cadena="0"+cadena;
+        }
+        ui->H_Result->setText(QString::fromStdString("0x")+cadena);
       }else if(result == "infinite"){
         ui->R_Result->setText(result);
         ui->IE_Result->setText(QString::fromStdString("01111111100000000000000000000000"));
@@ -62,11 +80,21 @@ void MainWindow::on_prodButton_released()
 
     //Campos del numero1
     ui->op1I->setText(QString::fromStdString(dataA.getBinary32()));
-    ui->op1H->setText(QString::fromStdString("0x")+QString::number(dataA.getNumHexa(),16)); //base16
+
+    QString cadena = QString::number(dataA.getNumHexa(),16);
+    while(cadena.length()<8){
+        cadena="0"+cadena;
+    }
+    ui->op1H->setText(QString::fromStdString("0x")+cadena); //base16
 
     //Campos del numero2
     ui->op2I->setText(QString::fromStdString(dataB.getBinary32()));
-    ui->op2H->setText(QString::fromStdString("0x")+QString::number(dataB.getNumHexa(),16));
+
+    cadena = QString::number(dataB.getNumHexa(),16);
+    while(cadena.length()<8){
+        cadena="0"+cadena;
+    }
+    ui->op2H->setText(QString::fromStdString("0x")+cadena);
 
     //Campos del resultado
     QString resultado = alu.Resultado();
@@ -74,7 +102,12 @@ void MainWindow::on_prodButton_released()
         DataConvert resultNum(resultado.toFloat());
         ui->R_Result->setText(resultado);
         ui->IE_Result->setText(QString::fromStdString(resultNum.getBinary32()));
-        ui->H_Result->setText(QString::fromStdString("0x")+QString::number(resultNum.getNumHexa(),16));
+
+        cadena = QString::number(resultNum.getNumHexa(),16);
+        while(cadena.length()<8){
+            cadena="0"+cadena;
+        }
+        ui->H_Result->setText(QString::fromStdString("0x")+cadena);
 
 
     }else{
@@ -82,7 +115,12 @@ void MainWindow::on_prodButton_released()
         DataConvert resultNum(resultUltim);
         ui->R_Result->setText(resultado);
         ui->IE_Result->setText(QString::fromStdString(resultNum.getBinary32()));
-        ui->H_Result->setText(QString::fromStdString("0x")+QString::number(resultNum.getNumHexa(),16));
+
+        cadena = QString::number(resultNum.getNumHexa(),16);
+        while(cadena.length()<8){
+            cadena="0"+cadena;
+        }
+        ui->H_Result->setText(QString::fromStdString("0x")+cadena);
     }
 }
 
@@ -98,10 +136,20 @@ void MainWindow::on_divButton_released()
 
     //Campos del numero1
     ui->op1I->setText(QString::fromStdString(dataA.getBinary32()));
-    ui->op1H->setText(QString::fromStdString("0x")+QString::number(dataA.getNumHexa(),16)); //base16
+
+    QString cadena = QString::number(dataA.getNumHexa(),16);
+    while(cadena.length()<8){
+        cadena="0"+cadena;
+    }
+    ui->op1H->setText(QString::fromStdString("0x")+cadena); //base16
     //Campos del numero2
-    ui->op1I->setText(QString::fromStdString(dataB.getBinary32()));
-    ui->op1H->setText(QString::fromStdString("0x")+QString::number(dataB.getNumHexa(),16));
+    ui->op2I->setText(QString::fromStdString(dataB.getBinary32()));
+
+    cadena = QString::number(dataB.getNumHexa(),16);
+    while(cadena.length()<8){
+        cadena="0"+cadena;
+    }
+    ui->op2H->setText(QString::fromStdString("0x")+cadena);
 
     //Campos del resultado
     QString resultado = alu.Resultado();
@@ -109,7 +157,11 @@ void MainWindow::on_divButton_released()
         DataConvert resultNum(resultado.toFloat());
         ui->R_Result->setText(resultado);
         ui->IE_Result->setText(QString::fromStdString(resultNum.getBinary32()));
-        ui->H_Result->setText(QString::fromStdString("0x")+QString::number(resultNum.getNumHexa(),16));
+        cadena = QString::number(resultNum.getNumHexa(),16);
+        while(cadena.length()<8){
+            cadena="0"+cadena;
+        }
+        ui->H_Result->setText(QString::fromStdString("0x")+cadena);
 
     //special cases for CONSTANTS infinite, minus infinitive and NaN, always the same numbers
 

@@ -66,7 +66,7 @@ QString Multiplicacion::multiply(DataConvert num1, DataConvert num2){
     if((Redondeado==1 && Sticky==1) || (Redondeado==1 && Sticky==0 && mantisaProducto[0]==1)){
         //sumar 1 a la primera mitad de la mantisa
         int acarreo=0;
-        for(int i=23; i>0; i--){
+        for(int i=23; i>=0; i--){
             if(mantisaProducto[i]==1 && acarreo==1){
                 mantisaProducto[i]=1;
                 acarreo=1;

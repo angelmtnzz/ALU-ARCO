@@ -16,7 +16,7 @@ QString Multiplicacion::multiply(DataConvert num1, DataConvert num2){
 
     //OBTENEMOS SIGNO Y EXPONENTE DEL PRODUCTO
     //Signo del producto = signo 1 * signo 2
-    if(num1.getSigno()==num1.getSigno())
+    if(num1.getSigno()==num2.getSigno())
         Signo=0;
     else
         Signo=1;

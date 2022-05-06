@@ -38,9 +38,8 @@ QString Division::div(DataConvert num1, DataConvert num2){
     }
 
     //Escalamos los numeros
-    A=num1.BinaryToDecimal(num1.toBinary(num1.getPartFrac()));
-    B=num2.BinaryToDecimal(num2.toBinary(num2.getPartFrac()));
-
+    A=1;
+    B=1;
     for(int i=1;i<24;i++){
         A+=(Mantisa1[i]*pow(2,-i));
         B+=(Mantisa2[i]*pow(2,-i));
@@ -82,12 +81,12 @@ QString Division::div(DataConvert num1, DataConvert num2){
     ieeeNumX.at(1)=finalXNum.getExponente();
     ieeeNumX.at(2)=finalXNum.getPartFrac();
 
-    SignoDivision= Signo1^Signo2;
+    ExpDivision = num1.getExponente()-num2.getExponente()+ieeeNumX.at(1);
 
-    ExpDivision = 0;
-
-    SignoDivision=suma.Addicion(Exponente1,-Exponente2).toFloat();
-    SignoDivision=suma.Addicion(ExpDivision,ieeeNumX.at(1)).toFloat();
+    if(num1.getSigno()==num2.getSigno())
+        SignoDivision=0;
+    else
+        SignoDivision=1;
 
     //Comprobacion desbordamiento (if expDiv > 254 -> expDiv = infinite)
     if(ExpDivision>254){

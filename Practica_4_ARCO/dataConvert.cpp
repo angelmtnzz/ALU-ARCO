@@ -6,6 +6,9 @@ DataConvert::DataConvert(float num)
     unionIEEE.Numero=num;
 }
 
+DataConvert::~DataConvert(){
+
+}
 
 unsigned int DataConvert::getSigno(){
     return unionIEEE.bitfields.Signo;

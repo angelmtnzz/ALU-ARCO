@@ -128,25 +128,6 @@
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QLabel" name="op1R">
-    <property name="geometry">
-     <rect>
-      <x>70</x>
-      <y>90</y>
-      <width>221</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::StyledPanel</enum>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
    <widget class="QLabel" name="op1I">
     <property name="geometry">
      <rect>
@@ -171,25 +152,6 @@
      <rect>
       <x>530</x>
       <y>90</y>
-      <width>221</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::StyledPanel</enum>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QLabel" name="op2R">
-    <property name="geometry">
-     <rect>
-      <x>70</x>
-      <y>120</y>
       <width>221</width>
       <height>20</height>
      </rect>
@@ -242,7 +204,7 @@
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QPushButton" name="PB1">
+   <widget class="QPushButton" name="sumButton">
     <property name="geometry">
      <rect>
       <x>20</x>
@@ -255,7 +217,7 @@
      <string>+</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="PB2">
+   <widget class="QPushButton" name="prodButton">
     <property name="geometry">
      <rect>
       <x>270</x>
@@ -268,7 +230,7 @@
      <string>x</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="PB3">
+   <widget class="QPushButton" name="divButton">
     <property name="geometry">
      <rect>
       <x>510</x>
@@ -355,6 +317,26 @@
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="op2R">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>120</y>
+      <width>221</width>
+      <height>21</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="op1R">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>90</y>
+      <width>221</width>
+      <height>21</height>
+     </rect>
     </property>
    </widget>
   </widget>

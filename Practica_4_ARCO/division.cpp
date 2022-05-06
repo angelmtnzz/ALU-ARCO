@@ -5,6 +5,10 @@ Division::Division()
 {
 
 }
+
+Division::~Division(){
+
+}
 QString Division::div(DataConvert num1, DataConvert num2){
 
     DataConvert::Code output;

@@ -12,6 +12,7 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
@@ -29,19 +30,19 @@ public:
     QLabel *HEXA;
     QLabel *OP1;
     QLabel *OP2;
-    QLabel *op1R;
     QLabel *op1I;
     QLabel *op1H;
-    QLabel *op2R;
     QLabel *op2I;
     QLabel *op2H;
-    QPushButton *PB1;
-    QPushButton *PB2;
-    QPushButton *PB3;
+    QPushButton *sumButton;
+    QPushButton *prodButton;
+    QPushButton *divButton;
     QLabel *R;
     QLabel *R_Result;
     QLabel *IE_Result;
     QLabel *H_Result;
+    QLineEdit *op2R;
+    QLineEdit *op1R;
     QStatusBar *statusbar;
 
     void setupUi(QMainWindow *MainWindow)
@@ -81,11 +82,6 @@ public:
         OP2->setGeometry(QRect(20, 120, 41, 20));
         OP2->setFrameShape(QFrame::StyledPanel);
         OP2->setAlignment(Qt::AlignCenter);
-        op1R = new QLabel(centralwidget);
-        op1R->setObjectName(QString::fromUtf8("op1R"));
-        op1R->setGeometry(QRect(70, 90, 221, 20));
-        op1R->setFrameShape(QFrame::StyledPanel);
-        op1R->setAlignment(Qt::AlignCenter);
         op1I = new QLabel(centralwidget);
         op1I->setObjectName(QString::fromUtf8("op1I"));
         op1I->setGeometry(QRect(300, 90, 221, 20));
@@ -96,11 +92,6 @@ public:
         op1H->setGeometry(QRect(530, 90, 221, 20));
         op1H->setFrameShape(QFrame::StyledPanel);
         op1H->setAlignment(Qt::AlignCenter);
-        op2R = new QLabel(centralwidget);
-        op2R->setObjectName(QString::fromUtf8("op2R"));
-        op2R->setGeometry(QRect(70, 120, 221, 20));
-        op2R->setFrameShape(QFrame::StyledPanel);
-        op2R->setAlignment(Qt::AlignCenter);
         op2I = new QLabel(centralwidget);
         op2I->setObjectName(QString::fromUtf8("op2I"));
         op2I->setGeometry(QRect(300, 120, 221, 20));
@@ -111,15 +102,15 @@ public:
         op2H->setGeometry(QRect(530, 120, 221, 20));
         op2H->setFrameShape(QFrame::StyledPanel);
         op2H->setAlignment(Qt::AlignCenter);
-        PB1 = new QPushButton(centralwidget);
-        PB1->setObjectName(QString::fromUtf8("PB1"));
-        PB1->setGeometry(QRect(20, 160, 241, 24));
-        PB2 = new QPushButton(centralwidget);
-        PB2->setObjectName(QString::fromUtf8("PB2"));
-        PB2->setGeometry(QRect(270, 160, 231, 24));
-        PB3 = new QPushButton(centralwidget);
-        PB3->setObjectName(QString::fromUtf8("PB3"));
-        PB3->setGeometry(QRect(510, 160, 241, 24));
+        sumButton = new QPushButton(centralwidget);
+        sumButton->setObjectName(QString::fromUtf8("sumButton"));
+        sumButton->setGeometry(QRect(20, 160, 241, 24));
+        prodButton = new QPushButton(centralwidget);
+        prodButton->setObjectName(QString::fromUtf8("prodButton"));
+        prodButton->setGeometry(QRect(270, 160, 231, 24));
+        divButton = new QPushButton(centralwidget);
+        divButton->setObjectName(QString::fromUtf8("divButton"));
+        divButton->setGeometry(QRect(510, 160, 241, 24));
         R = new QLabel(centralwidget);
         R->setObjectName(QString::fromUtf8("R"));
         R->setGeometry(QRect(20, 200, 41, 20));
@@ -140,6 +131,12 @@ public:
         H_Result->setGeometry(QRect(530, 200, 221, 20));
         H_Result->setFrameShape(QFrame::StyledPanel);
         H_Result->setAlignment(Qt::AlignCenter);
+        op2R = new QLineEdit(centralwidget);
+        op2R->setObjectName(QString::fromUtf8("op2R"));
+        op2R->setGeometry(QRect(70, 120, 221, 21));
+        op1R = new QLineEdit(centralwidget);
+        op1R->setObjectName(QString::fromUtf8("op1R"));
+        op1R->setGeometry(QRect(70, 90, 221, 21));
         MainWindow->setCentralWidget(centralwidget);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -159,15 +156,13 @@ public:
         HEXA->setText(QCoreApplication::translate("MainWindow", "HEXADECIMAL", nullptr));
         OP1->setText(QCoreApplication::translate("MainWindow", "OP1", nullptr));
         OP2->setText(QCoreApplication::translate("MainWindow", "OP2", nullptr));
-        op1R->setText(QString());
         op1I->setText(QString());
         op1H->setText(QString());
-        op2R->setText(QString());
         op2I->setText(QString());
         op2H->setText(QString());
-        PB1->setText(QCoreApplication::translate("MainWindow", "+", nullptr));
-        PB2->setText(QCoreApplication::translate("MainWindow", "x", nullptr));
-        PB3->setText(QCoreApplication::translate("MainWindow", "/", nullptr));
+        sumButton->setText(QCoreApplication::translate("MainWindow", "+", nullptr));
+        prodButton->setText(QCoreApplication::translate("MainWindow", "x", nullptr));
+        divButton->setText(QCoreApplication::translate("MainWindow", "/", nullptr));
         R->setText(QCoreApplication::translate("MainWindow", "R", nullptr));
         R_Result->setText(QString());
         IE_Result->setText(QString());
